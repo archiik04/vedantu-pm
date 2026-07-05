@@ -245,6 +245,7 @@ export default function FamilyLinkLayout({
               voiceAudioPaused={voiceAudioPaused}
               setDeleteStep={setDeleteStep}
               showToast={showToast}
+              erasedCategories={erasedCategories}
             />
           )}
 

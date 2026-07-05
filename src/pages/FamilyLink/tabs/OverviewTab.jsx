@@ -11,7 +11,8 @@ export default function OverviewTab({ setActiveTab }) {
           <span className="font-light">Safely Supervised</span>
         </h1>
         <div className="flex items-center gap-3 mt-4">
-          <span className="bg-[#34A853]/10 text-[#34A853] border border-[#34A853]/15 text-[10px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider select-none">
+          <span className="flex items-center gap-2 bg-[#34A853]/10 border border-[#34A853]/15 text-xs font-semibold px-3 py-1.5 rounded-lg text-[#F7F7F7] select-none">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#34A853] shrink-0"></span>
             Supervision Active
           </span>
           <span className="text-xs text-[#777777]">Aanya • 12 years old</span>
@@ -33,12 +34,11 @@ export default function OverviewTab({ setActiveTab }) {
               <div className="w-12 h-12 rounded-full bg-[#4285F4]/10 border border-[#4285F4]/20 flex items-center justify-center text-[#4285F4] shrink-0">
                 <Shield className="w-6 h-6" />
               </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="bg-[#4285F4]/15 text-[#4285F4] border border-[#4285F4]/20 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">New Control</span>
-                  <span className="text-[11px] text-[#777777]">YouTube Logs</span>
+              <div className="flex flex-col justify-center">
+                <div className="flex items-center select-none">
+                  <span className="text-[11px] text-[#777777] font-medium leading-none">YouTube Logs</span>
                 </div>
-                <h3 className="text-[15px] font-medium text-[#F7F7F7] mt-1">YouTube Privacy Center</h3>
+                <h3 className="text-[15px] font-medium text-[#F7F7F7] mt-1.5">YouTube Privacy Center</h3>
                 <p className="text-xs text-[#A8A8A8] mt-0.5 font-light">
                   Pause search activity, delete watched videos trails, or request complete history data packages.
                 </p>
@@ -66,7 +66,10 @@ export default function OverviewTab({ setActiveTab }) {
               <h4 className="text-[14px] font-medium text-[#F7F7F7] mt-2.5">Home</h4>
               <p className="text-xs text-[#777777] mt-0.5 font-light">Device GPS tracking active</p>
             </div>
-            <div className="text-[11px] text-[#34A853] font-bold bg-[#34A853]/10 px-3 py-1 rounded-full border border-[#34A853]/15 self-start select-none">Updated 2m ago</div>
+            <span className="inline-flex items-center gap-1.5 bg-[#34A853]/10 border border-[#34A853]/15 text-[10px] font-semibold px-2 py-0.5 rounded-lg text-[#F7F7F7] h-5 leading-none select-none w-fit self-start">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#34A853] shrink-0"></span>
+              Updated 2m ago
+            </span>
           </div>
 
           {/* App Restrictions widget */}
@@ -80,7 +83,10 @@ export default function OverviewTab({ setActiveTab }) {
                 <p className="text-xs text-[#A8A8A8] mt-0.5 font-light">YouTube Kids (Allowed) • Chrome (Filtered) • Search (Filtered)</p>
               </div>
             </div>
-            <span className="text-xs text-[#777777] bg-[#131313] px-3.5 py-1.5 rounded-xl border border-white/5 relative z-10">Standard rules enforced</span>
+            <span className="flex items-center gap-2 bg-[#131313] border border-white/5 rounded-lg px-3 py-1.5 text-xs font-semibold text-[#F7F7F7] relative z-10">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#777777] shrink-0"></span>
+              Standard rules enforced
+            </span>
           </div>
         </div>
       </div>

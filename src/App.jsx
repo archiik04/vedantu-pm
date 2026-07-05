@@ -30,7 +30,7 @@ export default function App() {
 
   // Erasure Scope Dialog states (Step 1-5 deletion flow)
   const [deleteStep, setDeleteStep] = useState(1); 
-  const [erasureScope, setErasureScope] = useState('7-days'); // '7-days' | '30-days' | 'all' | 'account'
+  const [erasureScope, setErasureScope] = useState('youtube'); // 'device' | 'youtube' | 'everything'
   const [deleteProcessing, setDeleteProcessing] = useState(false);
   const [deleteProgress, setDeleteProgress] = useState(0);
   const [deleteTicker, setDeleteTicker] = useState('');
@@ -72,10 +72,8 @@ export default function App() {
           setDeleteProcessing(false);
           setDeleteStep(5);
           // Purge corresponding categories depending on scope
-          if (erasureScope === '7-days' || erasureScope === '30-days') {
+          if (erasureScope === 'device' || erasureScope === 'youtube') {
             setErasedCategories(prev => ({ ...prev, watchSearch: true }));
-          } else if (erasureScope === 'all') {
-            setErasedCategories(prev => ({ ...prev, watchSearch: true, voiceAudio: true }));
           } else {
             setErasedCategories({ watchSearch: true, voiceAudio: true, comments: true });
           }

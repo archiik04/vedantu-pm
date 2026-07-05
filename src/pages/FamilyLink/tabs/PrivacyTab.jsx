@@ -17,8 +17,11 @@ export default function PrivacyTab({
   setDeleteStep, 
   setDeleteCheckbox1, 
   setDeleteCheckbox2, 
-  showToast 
+  showToast,
+  erasedCategories
 }) {
+  const isCleared = erasedCategories?.watchSearch;
+
   return (
     <div className="flex flex-col animate-fadeIn space-y-10">
       {/* Heading */}
@@ -37,7 +40,8 @@ export default function PrivacyTab({
             Verification modules evaluate active trackers, unencrypted metadata tags, and search index registers.
           </p>
           <div className="flex items-center gap-3.5 mt-4">
-            <span className="text-[11px] font-bold text-[#34A853] bg-[#34A853]/10 border border-[#34A853]/15 px-3 py-0.5 rounded-full uppercase tracking-wider select-none">
+            <span className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#34A853]/10 text-[#F7F7F7] border border-[#34A853]/15 shadow-sm select-none">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#34A853] shrink-0"></span>
               Optimized (92%)
             </span>
           </div>
@@ -68,47 +72,59 @@ export default function PrivacyTab({
         <h2 className="text-[18px] font-medium text-[#F7F7F7] tracking-tight">Recent Activity logs</h2>
         
         <div className="flex flex-col gap-3.5">
-          {/* Row 1 */}
-          <div className="p-4 bg-[#242424]/30 border border-white/5 rounded-2xl flex items-center justify-between hover:bg-[#242424] transition-all hover:scale-[1.01] duration-200 shadow-md">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-[#131313] border border-white/5 flex items-center justify-center text-[#A8A8A8] shrink-0">
-                <Play className="w-4 h-4 fill-current text-[#F7F7F7]" />
-              </div>
-              <div>
-                <p className="text-xs font-medium text-[#F7F7F7]">Watched: Khan Academy Algebra Basics</p>
-                <p className="text-[10px] text-[#777777] mt-0.5">Category: YouTube History • Aanya</p>
+          {isCleared ? (
+            <div className="p-5 bg-[#242424]/10 border border-white/5 border-dashed rounded-2xl flex items-center justify-center text-center py-8 select-none">
+              <div className="flex flex-col items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-[#34A853] opacity-90" />
+                <span className="text-xs font-semibold text-[#F7F7F7]">Activity logs cleared just now</span>
+                <span className="text-[11px] text-[#A8A8A8] font-light">Watch and search histories are empty across all surfaces.</span>
               </div>
             </div>
-            <span className="text-[11px] text-[#A8A8A8] font-light">Yesterday, 1:40 PM</span>
-          </div>
+          ) : (
+            <>
+              {/* Row 1 */}
+              <div className="p-4 bg-[#242424]/30 border border-white/5 rounded-2xl flex items-center justify-between hover:bg-[#242424] transition-all hover:scale-[1.01] duration-200 shadow-md">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#131313] border border-white/5 flex items-center justify-center text-[#A8A8A8] shrink-0">
+                    <Play className="w-4 h-4 fill-current text-[#F7F7F7]" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium text-[#F7F7F7]">Watched: Khan Academy Algebra Basics</p>
+                    <p className="text-[10px] text-[#777777] mt-0.5">Category: YouTube History • Aanya</p>
+                  </div>
+                </div>
+                <span className="text-[11px] text-[#A8A8A8] font-light">Yesterday, 1:40 PM</span>
+              </div>
 
-          {/* Row 2 */}
-          <div className="p-4 bg-[#242424]/30 border border-white/5 rounded-2xl flex items-center justify-between hover:bg-[#242424] transition-all hover:scale-[1.01] duration-200 shadow-md">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-[#131313] border border-white/5 flex items-center justify-center text-[#A8A8A8] shrink-0">
-                <Compass className="w-4 h-4 text-[#F7F7F7]" />
+              {/* Row 2 */}
+              <div className="p-4 bg-[#242424]/30 border border-white/5 rounded-2xl flex items-center justify-between hover:bg-[#242424] transition-all hover:scale-[1.01] duration-200 shadow-md">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#131313] border border-white/5 flex items-center justify-center text-[#A8A8A8] shrink-0">
+                    <Compass className="w-4 h-4 text-[#F7F7F7]" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium text-[#F7F7F7]">Removed Search query: "Minecraft mods"</p>
+                    <p className="text-[10px] text-[#777777] mt-0.5">Category: Activity Log Control • Parent</p>
+                  </div>
+                </div>
+                <span className="text-[11px] text-[#A8A8A8] font-light">Yesterday, 10:15 AM</span>
               </div>
-              <div>
-                <p className="text-xs font-medium text-[#F7F7F7]">Removed Search query: "Minecraft mods"</p>
-                <p className="text-[10px] text-[#777777] mt-0.5">Category: Activity Log Control • Parent</p>
-              </div>
-            </div>
-            <span className="text-[11px] text-[#A8A8A8] font-light">Yesterday, 10:15 AM</span>
-          </div>
 
-          {/* Row 3 */}
-          <div className="p-4 bg-[#242424]/30 border border-white/5 rounded-2xl flex items-center justify-between hover:bg-[#242424] transition-all hover:scale-[1.01] duration-200 shadow-md">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-[#131313] border border-white/5 flex items-center justify-center text-[#A8A8A8] shrink-0">
-                <Database className="w-4 h-4 text-[#F7F7F7]" />
+              {/* Row 3 */}
+              <div className="p-4 bg-[#242424]/30 border border-white/5 rounded-2xl flex items-center justify-between hover:bg-[#242424] transition-all hover:scale-[1.01] duration-200 shadow-md">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#131313] border border-white/5 flex items-center justify-center text-[#A8A8A8] shrink-0">
+                    <Database className="w-4 h-4 text-[#F7F7F7]" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium text-[#F7F7F7]">Downloaded: Full activity database logs request package</p>
+                    <p className="text-[10px] text-[#777777] mt-0.5">Category: Backups • Parent</p>
+                  </div>
+                </div>
+                <span className="text-[11px] text-[#A8A8A8] font-light">2 Days Ago, 3:55 PM</span>
               </div>
-              <div>
-                <p className="text-xs font-medium text-[#F7F7F7]">Downloaded: Full activity database logs request package</p>
-                <p className="text-[10px] text-[#777777] mt-0.5">Category: Backups • Parent</p>
-              </div>
-            </div>
-            <span className="text-[11px] text-[#A8A8A8] font-light">2 Days Ago, 3:55 PM</span>
-          </div>
+            </>
+          )}
         </div>
       </div>
 

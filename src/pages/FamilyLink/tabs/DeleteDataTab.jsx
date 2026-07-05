@@ -1,7 +1,6 @@
 import React from 'react';
 import { 
   ArrowLeft, 
-  AlertTriangle, 
   Trash2, 
   Database, 
   CheckCircle2 
@@ -39,76 +38,75 @@ export default function DeleteDataTab({
         </div>
         {/* Step progress label */}
         {deleteStep < 4 && (
-          <span className="text-[11px] font-semibold text-[#808080] bg-[#131313] px-2.5 py-1 rounded-lg border border-white/5">
+          <span className="flex items-center gap-2 bg-[#131313] border border-white/5 rounded-lg px-2.5 py-1 text-[11px] font-semibold text-[#F7F7F7] select-none">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#808080] shrink-0"></span>
             Step {deleteStep} of 3
           </span>
         )}
       </div>
 
-      {/* STEP 1: Choose time range scope */}
+      {/* STEP 1: Choose erasure scope (Location-based matching the deck) */}
       {deleteStep === 1 && (
         <div className="flex flex-col gap-5 animate-fadeIn relative z-10">
           <p className="text-xs text-[#A8A8A8] font-light">Select the scope of history you wish to delete from Google servers:</p>
-          <div className="flex flex-col gap-3">
-            {/* Option 1: 7 Days */}
+          <div className="flex flex-col gap-3.5">
+            
+            {/* Option 1: This device only */}
             <label className="flex items-center justify-between p-4 bg-[#232323]/35 border border-white/5 rounded-xl cursor-pointer hover:bg-[#2A2A2A]/40 transition-colors">
-              <div className="flex flex-col">
-                <span className="text-xs font-medium text-[#F7F7F7]">Erase last 7 days</span>
-                <span className="text-[10.5px] text-[#777777] mt-0.5">Wipe watched videos and searches from the past week</span>
+              <div className="flex flex-col max-w-[85%]">
+                <span className="text-xs font-semibold text-[#F7F7F7]">This device only</span>
+                <span className="text-[10.5px] text-[#777777] mt-1.5 leading-normal">
+                  Remove Aanya's YouTube activity saved on this device
+                </span>
               </div>
               <input 
                 type="radio" 
                 name="scope" 
-                checked={erasureScope === '7-days'}
-                onChange={() => setErasureScope('7-days')}
-                className="accent-[#4285F4] w-4.5 h-4.5 cursor-pointer" 
+                checked={erasureScope === 'device'}
+                onChange={() => setErasureScope('device')}
+                className="accent-[#4285F4] w-4.5 h-4.5 cursor-pointer shrink-0" 
               />
             </label>
 
-            {/* Option 2: 30 Days */}
+            {/* Option 2: YouTube activity only (pre-selected by default) */}
             <label className="flex items-center justify-between p-4 bg-[#232323]/35 border border-white/5 rounded-xl cursor-pointer hover:bg-[#2A2A2A]/40 transition-colors">
-              <div className="flex flex-col">
-                <span className="text-xs font-medium text-[#F7F7F7]">Erase last 30 days</span>
-                <span className="text-[10.5px] text-[#777777] mt-0.5">Wipe watched videos and searches from the past month</span>
+              <div className="flex flex-col max-w-[85%]">
+                <span className="text-xs font-semibold text-[#F7F7F7]">YouTube activity only</span>
+                <span className="text-[10.5px] text-[#777777] mt-1.5 leading-normal">
+                  Watch history, search history, comments, voice activity across all devices
+                </span>
               </div>
               <input 
                 type="radio" 
                 name="scope" 
-                checked={erasureScope === '30-days'}
-                onChange={() => setErasureScope('30-days')}
-                className="accent-[#4285F4] w-4.5 h-4.5 cursor-pointer" 
+                checked={erasureScope === 'youtube'}
+                onChange={() => setErasureScope('youtube')}
+                className="accent-[#4285F4] w-4.5 h-4.5 cursor-pointer shrink-0" 
               />
             </label>
 
-            {/* Option 3: All history */}
-            <label className="flex items-center justify-between p-4 bg-[#232323]/35 border border-white/5 rounded-xl cursor-pointer hover:bg-[#2A2A2A]/40 transition-colors">
-              <div className="flex flex-col">
-                <span className="text-xs font-medium text-[#F7F7F7]">Erase all watch & search history</span>
-                <span className="text-[10.5px] text-[#777777] mt-0.5">Purge full history lists across all linked devices</span>
-              </div>
-              <input 
-                type="radio" 
-                name="scope" 
-                checked={erasureScope === 'all'}
-                onChange={() => setErasureScope('all')}
-                className="accent-[#4285F4] w-4.5 h-4.5 cursor-pointer" 
-              />
-            </label>
+            {/* Option 3: Everything Google has on this child */}
+            <div className="flex flex-col gap-2">
+              <label className="flex items-center justify-between p-4 bg-[#232323]/35 border border-[#EA4335]/25 rounded-xl cursor-pointer hover:bg-[#2A2A2A]/40 transition-colors">
+                <div className="flex flex-col max-w-[85%]">
+                  <span className="text-xs font-bold text-[#EA4335]">Everything Google has on this child</span>
+                  <span className="text-[10.5px] text-[#A8A8A8] mt-1.5 leading-normal">
+                    YouTube plus any other Google services linked to this profile
+                  </span>
+                </div>
+                <input 
+                  type="radio" 
+                  name="scope" 
+                  checked={erasureScope === 'everything'}
+                  onChange={() => setErasureScope('everything')}
+                  className="accent-[#4285F4] w-4.5 h-4.5 cursor-pointer shrink-0" 
+                />
+              </label>
+              <p className="text-[10px] text-[#777777] pl-1 font-light">
+                ⚠️ This is broad. We recommend reviewing what's included first.
+              </p>
+            </div>
 
-            {/* Option 4: Entire Account Activity */}
-            <label className="flex items-center justify-between p-4 bg-[#232323]/35 border border-white/5 rounded-xl cursor-pointer hover:bg-[#2A2A2A]/40 transition-colors">
-              <div className="flex flex-col">
-                <span className="text-xs font-bold text-[#EA4335]">Erase entire account activity database</span>
-                <span className="text-[10.5px] text-[#808080] mt-0.5">YouTube logs, Assistant audio entries, and Chrome browser logs</span>
-              </div>
-              <input 
-                type="radio" 
-                name="scope" 
-                checked={erasureScope === 'account'}
-                onChange={() => setErasureScope('account')}
-                className="accent-[#4285F4] w-4.5 h-4.5 cursor-pointer" 
-              />
-            </label>
           </div>
 
           <div className="flex justify-end gap-3 border-t border-white/5 pt-5 mt-2 shrink-0">
@@ -149,14 +147,14 @@ export default function DeleteDataTab({
               <div>
                 <h4 className="text-xs font-bold text-[#F7F7F7]">Aanya's Profile</h4>
                 <p className="text-[10px] text-[#777777] mt-0.5">
-                  {erasureScope === '7-days' && 'Scope: Last 7 days activity logs'}
-                  {erasureScope === '30-days' && 'Scope: Last 30 days activity logs'}
-                  {erasureScope === 'all' && 'Scope: All watch & search logs'}
-                  {erasureScope === 'account' && 'Scope: Full account logs database'}
+                  {erasureScope === 'device' && 'Scope: Local device YouTube logs'}
+                  {erasureScope === 'youtube' && 'Scope: Watch & search logs across all devices'}
+                  {erasureScope === 'everything' && 'Scope: All services & accounts logs database'}
                 </p>
               </div>
             </div>
-            <span className="text-[10.5px] text-[#A8A8A8] bg-[#131313] px-3.5 py-1.5 rounded-lg border border-white/5">
+            <span className="flex items-center gap-2 bg-[#131313] border border-white/5 rounded-lg px-3 py-1.5 text-xs font-semibold text-[#F7F7F7] select-none">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#4285F4] shrink-0"></span>
               YouTube Kids
             </span>
           </div>
@@ -258,23 +256,55 @@ export default function DeleteDataTab({
         </div>
       )}
 
-      {/* STEP 5: Success screen */}
+      {/* STEP 5: Success screen (Redesigned with 3 confirmed stamps) */}
       {deleteStep === 5 && (
-        <div className="flex flex-col items-center justify-center p-6 text-center animate-fadeIn min-h-[220px] relative z-10">
-          <div className="relative w-20 h-20 flex items-center justify-center mb-6 select-none">
-            {/* Deep background green radial pulse glow */}
-            <div className="absolute inset-0 bg-[#34A853]/15 rounded-full blur-xl animate-pulse"></div>
-            {/* Layer 1: Outer glossy ring */}
-            <div className="absolute inset-0 rounded-full border border-[#34A853]/35 bg-[#1B1B1B]/40 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.5)]"></div>
-            {/* Layer 2: Inner metallic bezel */}
-            <div className="absolute inset-1.5 rounded-full border border-white/5 bg-gradient-to-b from-[#242424] to-[#121212] shadow-inner"></div>
-            {/* Check icon with drop shadow */}
-            <CheckCircle2 className="w-7 h-7 text-[#34A853] relative z-10 drop-shadow-[0_0_8px_rgba(52,168,83,0.55)]" />
-          </div>
-          <h3 className="text-sm font-medium text-[#F7F7F7]">Data Purged Successfully</h3>
-          <p className="text-[10px] text-[#A8A8A8] mt-1 font-light">Google active database indexes have updated.</p>
+        <div className="flex flex-col items-center justify-center p-4 text-center animate-fadeIn relative z-10 w-full">
+          
+          <h3 className="text-md font-bold text-[#F7F7F7] tracking-tight">Data Purged Successfully</h3>
+          <p className="text-[11px] text-[#A8A8A8] mt-1.5 font-light">
+            All three surfaces confirmed. You don't need to check anywhere else.
+          </p>
 
-          <div className="w-full mt-6 border-t border-white/5 pt-4.5 flex justify-center">
+          {/* 3 verified stamps */}
+          <div className="grid grid-cols-3 gap-3.5 w-full my-6.5 select-none">
+            {/* Stamp 1: YouTube App */}
+            <div className="bg-[#242424]/40 border border-[#34A853]/25 rounded-xl p-4 flex flex-col items-center gap-2 shadow-inner">
+              <div className="w-7 h-7 rounded-full bg-[#34A853]/10 flex items-center justify-center text-[#34A853]">
+                <CheckCircle2 className="w-4.5 h-4.5 fill-current text-[#34A853]" />
+              </div>
+              <span className="text-[11px] font-bold text-[#F7F7F7] tracking-tight">YouTube App</span>
+              <span className="flex items-center gap-1 bg-[#34A853]/10 border border-[#34A853]/15 rounded px-1.5 py-0.5 text-[8.5px] font-semibold text-[#F7F7F7]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#34A853] shrink-0"></span>
+                Erase Confirmed
+              </span>
+            </div>
+
+            {/* Stamp 2: My Activity Portal */}
+            <div className="bg-[#242424]/40 border border-[#34A853]/25 rounded-xl p-4 flex flex-col items-center gap-2 shadow-inner">
+              <div className="w-7 h-7 rounded-full bg-[#34A853]/10 flex items-center justify-center text-[#34A853]">
+                <CheckCircle2 className="w-4.5 h-4.5 fill-current text-[#34A853]" />
+              </div>
+              <span className="text-[11px] font-bold text-[#F7F7F7] tracking-tight">myactivity.google</span>
+              <span className="flex items-center gap-1 bg-[#34A853]/10 border border-[#34A853]/15 rounded px-1.5 py-0.5 text-[8.5px] font-semibold text-[#F7F7F7]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#34A853] shrink-0"></span>
+                Erase Confirmed
+              </span>
+            </div>
+
+            {/* Stamp 3: Google Account */}
+            <div className="bg-[#242424]/40 border border-[#34A853]/25 rounded-xl p-4 flex flex-col items-center gap-2 shadow-inner">
+              <div className="w-7 h-7 rounded-full bg-[#34A853]/10 flex items-center justify-center text-[#34A853]">
+                <CheckCircle2 className="w-4.5 h-4.5 fill-current text-[#34A853]" />
+              </div>
+              <span className="text-[11px] font-bold text-[#F7F7F7] tracking-tight">Google Account</span>
+              <span className="flex items-center gap-1 bg-[#34A853]/10 border border-[#34A853]/15 rounded px-1.5 py-0.5 text-[8.5px] font-semibold text-[#F7F7F7]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#34A853] shrink-0"></span>
+                Erase Confirmed
+              </span>
+            </div>
+          </div>
+
+          <div className="w-full border-t border-white/5 pt-4.5 flex justify-center mt-2">
             <button 
               onClick={() => {
                 setDeleteStep(1);

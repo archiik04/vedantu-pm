@@ -50,7 +50,8 @@ export default function HistoryTab({ type, paused, setPaused, showToast, setActi
             <h4 className="text-[14px] font-medium text-[#F7F7F7]">Auto Delete</h4>
             <p className="text-[13px] text-[#A8A8A8] mt-1 font-light">Automatically delete activity logs older than a specific age.</p>
           </div>
-          <span className="text-[12px] font-bold text-[#4285F4] bg-[#4285F4]/10 border border-[#4285F4]/20 px-3.5 py-1 rounded-full uppercase tracking-wider select-none">
+          <span className="flex items-center gap-2 bg-[#4285F4]/10 border border-[#4285F4]/15 rounded-lg px-3 py-1.5 text-xs font-semibold text-[#F7F7F7] select-none">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#4285F4] shrink-0"></span>
             18 Months
           </span>
         </div>

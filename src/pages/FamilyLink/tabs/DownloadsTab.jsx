@@ -29,7 +29,10 @@ export default function DownloadsTab({ showToast }) {
                 <p className="text-[10px] text-[#777777] mt-0.5">Size: 42 KB • JSON format</p>
               </div>
             </div>
-            <span className="text-[9px] text-[#34A853] bg-[#34A853]/10 border border-[#34A853]/20 px-2.5 py-0.5 rounded font-bold uppercase tracking-wider">Completed</span>
+            <span className="flex items-center gap-2 bg-[#34A853]/10 border border-[#34A853]/15 rounded-lg px-3 py-1.5 text-xs font-semibold text-[#F7F7F7] select-none">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#34A853] shrink-0"></span>
+              Completed
+            </span>
           </div>
           
           <div className="p-5 bg-[#242424]/40 border border-white/5 rounded-2xl flex items-center justify-between hover:bg-[#242424] cursor-pointer transition-all duration-200 hover:scale-[1.01] shadow-md">
@@ -40,7 +43,10 @@ export default function DownloadsTab({ showToast }) {
                 <p className="text-[10px] text-[#777777] mt-0.5">Size: 12 KB • CSV format</p>
               </div>
             </div>
-            <span className="text-[9px] text-[#4285F4] bg-[#4285F4]/10 border border-[#4285F4]/20 px-2.5 py-0.5 rounded font-bold uppercase tracking-wider animate-pulse">Processing</span>
+            <span className="flex items-center gap-2 bg-[#4285F4]/10 border border-[#4285F4]/15 rounded-lg px-3 py-1.5 text-xs font-semibold text-[#F7F7F7] select-none animate-pulse">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#4285F4] shrink-0"></span>
+              Processing
+            </span>
           </div>
 
         </div>
