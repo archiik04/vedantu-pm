@@ -1,65 +1,47 @@
-# 🛡️ Google Family Link & YouTube Privacy Center Prototype
 
-A high-fidelity, interactive single-page application (SPA) prototype recreating the **Google Family Link** dashboard and **YouTube Privacy Center**. The visual design system has been reverse-engineered from the desktop version of **Proton Pass** to deliver a sleek, premium, production-ready dark-themed interface.
+# Google Family Link & YouTube Privacy Center
 
----
+**High-fidelity clickable prototype** for the Vedantu Product Management Intern assignment.
 
-## 🚀 Live Vercel Deployment
+## Live Demo
+[→ View Live Prototype](https://vedantu-pm-phi.vercel.app/)
 
-*   **Production Deployment URL:** [https://vedantu-pm-phi.vercel.app](https://vedantu-pm-phi.vercel.app)
-*   **Preview Build URL:** [https://vedantu-c0qs0fwho-archi-kanungos-projects.vercel.app](https://vedantu-c0qs0fwho-archi-kanungos-projects.vercel.app)
-*   **Deployment Status:** `Active / Healthy`
-*   **Routing Configuration:** Supported by Vercel redirection rules (`vercel.json`) rewriting all SPA paths to `index.html` to allow direct page reloads.
+## Overview
+This prototype showcases a **unified Family Privacy Center** inside Google Family Link — solving the fragmentation of data rights (access, export, and erasure) for supervised child accounts on YouTube, while aligning with India's **Digital Personal Data Protection (DPDP) Act**.
 
----
+It empowers parents with one central place to manage their child's YouTube data with clear controls, confirmations, and transparency.
 
-## 🎨 Visual System & Aesthetics (Proton-Inspired)
+## Key Features
+- Family Link supervision dashboard
+- Unified **Family Privacy Center** hub
+- Category-level and bulk data erasure with scope selection
+- Parent validation step before destructive actions
+- Activity logs, data export, and success confirmation across surfaces (YouTube, My Activity, Google Account)
+- Permissions inspector drawer and recommendations reset
 
-*   **Color Tokens:**
-    *   **Background:** `#090909` (Matte black overlaid with a coordinates grid pattern and a top-radial glow).
-    *   **Surface:** `#131313` (Used on sidebar navigation drawers and sub-menu containers).
-    *   **Card Containers:** `#1B1B1B` (Sculpted dashboard widgets with vertical lighting accents).
-    *   **Elevated Lists/Rows:** `#242424` / `#181818` (List item containers and hover targets).
-    *   **Borders:** `rgba(255, 255, 255, 0.05)` (Glassmorphism borders).
-    *   **Typography Colors:** `#F7F7F7` (Primary), `#A8A8A8` (Secondary), `#777777` (Muted).
-*   **Indicator Chip Design:** Features rectangular desaturated cards (`rounded-lg`) containing a colored dot on the left and white text on the right (e.g. Green dot + `Allowed` or Orange dot + `Filtered`), removing bulky emojis.
+## Tech Stack
+- React 18 + Vite
+- Tailwind CSS
 
----
-
-## 🛠️ High-Fidelity Features
-
-1.  **Overview Supervision Banner:** Displays real-time location metrics, screen time trackers, and YouTube logs.
-2.  **Privacy Health Audit Card:** Features a custom SVG coordinates trend graph matching the style of Proton's Dark Web monitoring cards.
-3.  **Parental Data Deletion Flow:**
-    *   **Step 1:** Location-based scopes ("This device only", "YouTube activity only", "Everything Google has on this child").
-    *   **Step 2:** Acme-style red-highlight warning box, target child profile specifications, and typed parent validation inputs.
-    *   **Step 3:** Independent verified stamps for the YouTube App, `myactivity.google.com`, and Google Account.
-4.  **Permissions Inspector Drawer:** Rows have soft transition lifts on hover, opening a slide-out drawer from the right to toggle device capabilities.
-
----
-
-## 📁 Folder Structure
-
-```
-src/
-├── components/
-│   ├── Header.jsx        # YouTube search and profile triggers
-│   ├── Sidebar.jsx       # Collapsible left navigation bar
-│   └── Toast.jsx         # Proton-aligned notification toast
-├── pages/
-│   ├── YouTubeHome.jsx   # Main video feed and category chips
-│   ├── VideoPlayer.jsx   # Recommendation sidebar and watch player
-│   └── FamilyLink/
-│       ├── FamilyLinkLayout.jsx  # Route tab manager layout
-│       └── tabs/
-│           ├── OverviewTab.jsx          # Family dashboard widgets
-│           ├── PrivacyTab.jsx           # Audit graph and activity timeline
-│           ├── HistoryTab.jsx           # Pause Watch/Search controls
-│           ├── RecommendationsTab.jsx   # Reset suggestions trigger
-│           ├── DownloadsTab.jsx         # Data export package tables
-│           ├── PermissionsTab.jsx       # Slide drawer settings sheet
-│           ├── SettingsTab.jsx          # General accounts documentation
-│           └── DeleteDataTab.jsx        # Location-based erasure wizard
+## Local Setup
+```bash
+git clone <https://github.com/archiik04/vedantu-pm>
+cd <https://github.com/archiik04/vedantu-pm>
+npm install
+npm run dev
 ```
 
-<!-- Trigger Vercel Integration Status -->
+## Prototype Happy Path
+1. Family Link Home → **Privacy & Data**
+2. Open **Family Privacy Center**
+3. View data categories → Export or Erase
+4. Choose erasure scope → Confirm with validation
+5. Processing → Success screen (erasure confirmed across 3 surfaces)
+
+## Design
+Premium dark theme with Proton-inspired surfaces, glassmorphism, smooth transitions, and Google-style UI elements.
+
+## Assignment Alignment
+- **Problem**: Fragmented data rights experience for parents of child accounts
+- **Solution**: Unified Family Privacy Center
+- **DPDP Focus**: Strong emphasis on user rights, children's data protection, transparency, purpose limitation, and verifiable parental control
